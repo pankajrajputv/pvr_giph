@@ -1,0 +1,5668 @@
+ADD TABLE "gi_acc_det"
+  AREA "Schema Area"
+  DUMP-NAME "gi_acc_det"
+
+ADD FIELD "refdate" OF "gi_acc_det" AS date 
+  FORMAT "99/99/99"
+  INITIAL ?
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 160
+
+ADD FIELD "particulars" OF "gi_acc_det" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  POSITION 3
+  MAX-WIDTH 400
+  ORDER 190
+
+ADD FIELD "amount" OF "gi_acc_det" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 210
+
+ADD FIELD "debit" OF "gi_acc_det" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 220
+
+ADD FIELD "credit" OF "gi_acc_det" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 230
+
+ADD FIELD "refnum1" OF "gi_acc_det" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 7
+  MAX-WIDTH 100
+  ORDER 240
+
+ADD FIELD "refnum2" OF "gi_acc_det" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 8
+  MAX-WIDTH 100
+  ORDER 250
+
+ADD FIELD "reg" OF "gi_acc_det" AS integer 
+  FORMAT "->>>9"
+  INITIAL "0"
+  LABEL "reg"
+  POSITION 9
+  MAX-WIDTH 4
+  ORDER 260
+
+ADD FIELD "partyname" OF "gi_acc_det" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 10
+  MAX-WIDTH 200
+  ORDER 270
+
+ADD FIELD "currency-data" OF "gi_acc_det" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 11
+  MAX-WIDTH 100
+  ORDER 280
+
+ADD FIELD "runbal1" OF "gi_acc_det" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 290
+
+ADD FIELD "runbal2" OF "gi_acc_det" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 300
+
+ADD FIELD "report-txt" OF "gi_acc_det" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  POSITION 14
+  MAX-WIDTH 16
+  ORDER 310
+
+ADD FIELD "amt1" OF "gi_acc_det" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 15
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 320
+
+ADD FIELD "amt2" OF "gi_acc_det" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 16
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 330
+
+ADD FIELD "amt3" OF "gi_acc_det" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 17
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 340
+
+ADD FIELD "amt4" OF "gi_acc_det" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 18
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 350
+
+ADD FIELD "amt5" OF "gi_acc_det" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 19
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 360
+
+ADD FIELD "report-txt2" OF "gi_acc_det" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  POSITION 20
+  MAX-WIDTH 16
+  ORDER 370
+
+ADD FIELD "cons" OF "gi_acc_det" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  POSITION 21
+  MAX-WIDTH 4
+  ORDER 380
+
+ADD FIELD "acc-led-name" OF "gi_acc_det" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 22
+  MAX-WIDTH 200
+  ORDER 390
+
+ADD FIELD "currency" OF "gi_acc_det" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Currency"
+  POSITION 23
+  MAX-WIDTH 16
+  ORDER 400
+
+ADD FIELD "forex-rate" OF "gi_acc_det" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Rate"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 410
+
+ADD FIELD "is-cheque" OF "gi_acc_det" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Is Chq"
+  POSITION 25
+  MAX-WIDTH 1
+  ORDER 420
+
+ADD FIELD "cheque-num" OF "gi_acc_det" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Cheque No."
+  POSITION 26
+  MAX-WIDTH 40
+  ORDER 430
+
+ADD FIELD "party-name" OF "gi_acc_det" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 28
+  MAX-WIDTH 200
+  ORDER 440
+
+ADD INDEX "idx" ON "gi_acc_det" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "refnum1" ASCENDING 
+  INDEX-FIELD "reg" ASCENDING 
+
+ADD INDEX "idx1" ON "gi_acc_det" 
+  AREA "Schema Area"
+  INDEX-FIELD "acc-led-name" ASCENDING 
+
+ADD INDEX "idx2" ON "gi_acc_det" 
+  AREA "Schema Area"
+  INDEX-FIELD "partyname" ASCENDING 
+
+ADD INDEX "idx3" ON "gi_acc_det" 
+  AREA "Schema Area"
+  INDEX-FIELD "refnum1" ASCENDING 
+
+ADD TABLE "gi_acc_grp"
+  AREA "Schema Area"
+  LABEL "Account Groups"
+  DUMP-NAME "gi_acc_grp"
+
+ADD FIELD "acc-grp-name" OF "gi_acc_grp" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Acc Grp Name"
+  POSITION 2
+  MAX-WIDTH 200
+  ORDER 10
+
+ADD FIELD "acc-grp-type" OF "gi_acc_grp" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 3
+  MAX-WIDTH 100
+  ORDER 20
+
+ADD FIELD "tally-acc-grp" OF "gi_acc_grp" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Tally Acc Group"
+  POSITION 4
+  MAX-WIDTH 200
+  ORDER 30
+
+ADD INDEX "idx" ON "gi_acc_grp" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "acc-grp-name" ASCENDING 
+
+ADD TABLE "gi_acc_hea"
+  AREA "Schema Area"
+  DUMP-NAME "gi_acc_hea"
+
+ADD FIELD "refdate" OF "gi_acc_hea" AS date 
+  FORMAT "99/99/99"
+  INITIAL ?
+  POSITION 3
+  MAX-WIDTH 4
+  ORDER 160
+
+ADD FIELD "particulars" OF "gi_acc_hea" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  POSITION 4
+  MAX-WIDTH 400
+  ORDER 190
+
+ADD FIELD "amount" OF "gi_acc_hea" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 210
+
+ADD FIELD "debit" OF "gi_acc_hea" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 220
+
+ADD FIELD "credit" OF "gi_acc_hea" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 230
+
+ADD FIELD "refnum1" OF "gi_acc_hea" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 8
+  MAX-WIDTH 100
+  ORDER 240
+
+ADD FIELD "refnum2" OF "gi_acc_hea" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 9
+  MAX-WIDTH 100
+  ORDER 250
+
+ADD FIELD "dbcr-diff" OF "gi_acc_hea" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Diff"
+  POSITION 10
+  MAX-WIDTH 17
+  HELP "Difference between debit and credit"
+  DECIMALS 2
+  ORDER 260
+
+ADD FIELD "IsContra" OF "gi_acc_hea" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Is Contra"
+  POSITION 11
+  MAX-WIDTH 1
+  ORDER 270
+
+ADD FIELD "IsPayment" OF "gi_acc_hea" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Payment"
+  POSITION 12
+  MAX-WIDTH 1
+  ORDER 280
+
+ADD FIELD "IsPurchase" OF "gi_acc_hea" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Is Purc."
+  POSITION 13
+  MAX-WIDTH 1
+  ORDER 290
+
+ADD FIELD "IsSales" OF "gi_acc_hea" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Is Sales"
+  POSITION 14
+  MAX-WIDTH 1
+  ORDER 300
+
+ADD FIELD "IsJV" OF "gi_acc_hea" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "JV"
+  POSITION 15
+  MAX-WIDTH 1
+  ORDER 310
+
+ADD FIELD "vouchertype" OF "gi_acc_hea" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Voucher Type"
+  POSITION 16
+  MAX-WIDTH 16
+  ORDER 320
+
+ADD FIELD "IsReceipt" OF "gi_acc_hea" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Receipt"
+  POSITION 17
+  MAX-WIDTH 1
+  ORDER 330
+
+ADD INDEX "idx" ON "gi_acc_hea" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "refnum1" ASCENDING 
+
+ADD TABLE "gi_acc_led"
+  AREA "Schema Area"
+  DUMP-NAME "gi_acc_led"
+
+ADD FIELD "acc-led-name" OF "gi_acc_led" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 2
+  MAX-WIDTH 200
+  ORDER 390
+
+ADD FIELD "sys-acc-grp-name" OF "gi_acc_led" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Sys Acc Grp Name"
+  POSITION 3
+  MAX-WIDTH 200
+  ORDER 400
+
+ADD FIELD "tally-acc-ledger" OF "gi_acc_led" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Tally Acc Ledger"
+  POSITION 4
+  MAX-WIDTH 200
+  ORDER 410
+
+ADD FIELD "IsBank" OF "gi_acc_led" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Is Bank"
+  POSITION 5
+  MAX-WIDTH 1
+  ORDER 420
+
+ADD FIELD "IsExpenses" OF "gi_acc_led" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Is Exps"
+  POSITION 6
+  MAX-WIDTH 1
+  ORDER 430
+
+ADD FIELD "IsCash" OF "gi_acc_led" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Cash"
+  POSITION 7
+  MAX-WIDTH 1
+  ORDER 440
+
+ADD FIELD "IsAP" OF "gi_acc_led" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "IsAP"
+  POSITION 8
+  MAX-WIDTH 1
+  ORDER 450
+
+ADD FIELD "IsAR" OF "gi_acc_led" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "IsAR"
+  POSITION 9
+  MAX-WIDTH 1
+  ORDER 460
+
+ADD FIELD "IsIncome" OF "gi_acc_led" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Income"
+  POSITION 10
+  MAX-WIDTH 1
+  ORDER 470
+
+ADD FIELD "acc-grp-name" OF "gi_acc_led" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Acc Grp Name"
+  POSITION 11
+  MAX-WIDTH 200
+  ORDER 480
+
+ADD INDEX "idx" ON "gi_acc_led" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "acc-led-name" ASCENDING 
+
+ADD TABLE "gi_acc_party"
+  AREA "Schema Area"
+  DUMP-NAME "gi_acc_party"
+
+ADD FIELD "party-name" OF "gi_acc_party" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 2
+  MAX-WIDTH 200
+  ORDER 10
+
+ADD FIELD "acc-led-name" OF "gi_acc_party" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 3
+  MAX-WIDTH 200
+  ORDER 20
+
+ADD FIELD "product" OF "gi_acc_party" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 4
+  MAX-WIDTH 100
+  ORDER 30
+
+ADD FIELD "tally-acc-party" OF "gi_acc_party" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 5
+  MAX-WIDTH 200
+  ORDER 40
+
+ADD INDEX "idx" ON "gi_acc_party" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "party-name" ASCENDING 
+  INDEX-FIELD "acc-led-name" ASCENDING 
+
+ADD TABLE "gi_agent"
+  AREA "Schema Area"
+  DUMP-NAME "gi_agent"
+
+ADD FIELD "TravelAgentId" OF "gi_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "TravelAgentId"
+  POSITION 2
+  MAX-WIDTH 40
+  ORDER 10
+
+ADD FIELD "CompanyName" OF "gi_agent" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "CompanyName"
+  POSITION 3
+  MAX-WIDTH 200
+  ORDER 20
+
+ADD FIELD "DateTime1" OF "gi_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "DateTime"
+  POSITION 4
+  MAX-WIDTH 16
+  ORDER 30
+
+ADD FIELD "Description" OF "gi_agent" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "Description"
+  POSITION 5
+  MAX-WIDTH 400
+  ORDER 40
+
+ADD FIELD "TransactionId" OF "gi_agent" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "TransactionId"
+  POSITION 6
+  MAX-WIDTH 100
+  ORDER 50
+
+ADD FIELD "CreditAmount" OF "gi_agent" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "CreditAmount"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 60
+
+ADD FIELD "DebitAmount" OF "gi_agent" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "DebitAmount"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 70
+
+ADD FIELD "SmartRemaining" OF "gi_agent" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "SmartRemaining"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 80
+
+ADD FIELD "Remarks" OF "gi_agent" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "Remarks"
+  POSITION 10
+  MAX-WIDTH 400
+  ORDER 90
+
+ADD FIELD "Datetime2" OF "gi_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Datetime2"
+  POSITION 11
+  MAX-WIDTH 40
+  ORDER 100
+
+ADD FIELD "ODAmount" OF "gi_agent" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "ODAmount"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 110
+
+ADD FIELD "EnteredBy" OF "gi_agent" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "EnteredBy"
+  POSITION 13
+  MAX-WIDTH 30
+  ORDER 120
+
+ADD FIELD "TerminalName" OF "gi_agent" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "TerminalName"
+  POSITION 14
+  MAX-WIDTH 200
+  ORDER 130
+
+ADD FIELD "Productname" OF "gi_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Productname"
+  POSITION 15
+  MAX-WIDTH 40
+  ORDER 140
+
+ADD FIELD "DateTime11" OF "gi_agent" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Date Time 1"
+  POSITION 16
+  MAX-WIDTH 4
+  ORDER 150
+
+ADD FIELD "DateTime22" OF "gi_agent" AS date 
+  FORMAT "99/99/99"
+  INITIAL ?
+  LABEL "Date Time 2"
+  POSITION 17
+  MAX-WIDTH 4
+  ORDER 160
+
+ADD FIELD "YearMonth1" OF "gi_agent" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month 1"
+  POSITION 18
+  MAX-WIDTH 16
+  ORDER 170
+
+ADD FIELD "YearMonth2" OF "gi_agent" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month 2"
+  POSITION 19
+  MAX-WIDTH 16
+  ORDER 180
+
+ADD FIELD "cons" OF "gi_agent" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 20
+  MAX-WIDTH 4
+  ORDER 190
+
+ADD FIELD "YearMonth1FN" OF "gi_agent" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 21
+  MAX-WIDTH 16
+  ORDER 200
+
+ADD FIELD "YearMonth1Week" OF "gi_agent" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month Week"
+  POSITION 22
+  MAX-WIDTH 16
+  ORDER 210
+
+ADD FIELD "party-name" OF "gi_agent" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "PartyName"
+  POSITION 23
+  MAX-WIDTH 200
+  ORDER 220
+
+ADD INDEX "idx" ON "gi_agent" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cons" ASCENDING 
+
+ADD INDEX "idx1" ON "gi_agent" 
+  AREA "Schema Area"
+  INDEX-FIELD "TransactionId" ASCENDING 
+
+ADD TABLE "gi_data_airline"
+  AREA "Schema Area"
+  DUMP-NAME "gi_data_airline"
+
+ADD FIELD "airline-cons" OF "gi_data_airline" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "TrnsType" OF "gi_data_airline" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "TransType"
+  POSITION 3
+  MAX-WIDTH 16
+  ORDER 20
+
+ADD FIELD "AirlinesName" OF "gi_data_airline" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "AirlinesName"
+  POSITION 4
+  MAX-WIDTH 40
+  ORDER 30
+
+ADD FIELD "AgentName" OF "gi_data_airline" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "AgentName"
+  POSITION 5
+  MAX-WIDTH 200
+  ORDER 40
+
+ADD FIELD "TravelAgentId" OF "gi_data_airline" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "TravelAgentId"
+  POSITION 6
+  MAX-WIDTH 40
+  ORDER 50
+
+ADD FIELD "IATAStock" OF "gi_data_airline" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  POSITION 7
+  MAX-WIDTH 40
+  ORDER 60
+
+ADD FIELD "BKPNR" OF "gi_data_airline" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "BK PNR"
+  POSITION 8
+  MAX-WIDTH 40
+  ORDER 70
+
+ADD FIELD "AirlinePNR" OF "gi_data_airline" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Airline PNR"
+  POSITION 9
+  MAX-WIDTH 40
+  ORDER 80
+
+ADD FIELD "CRSPNR" OF "gi_data_airline" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "CRSPNR"
+  POSITION 10
+  MAX-WIDTH 40
+  ORDER 90
+
+ADD FIELD "TicketNumber" OF "gi_data_airline" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Ticket Number"
+  POSITION 11
+  MAX-WIDTH 40
+  ORDER 100
+
+ADD FIELD "TravelType" OF "gi_data_airline" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Travel Type"
+  POSITION 12
+  MAX-WIDTH 16
+  ORDER 110
+
+ADD FIELD "MTAgentName" OF "gi_data_airline" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "MTAgent Name"
+  POSITION 13
+  MAX-WIDTH 200
+  ORDER 120
+
+ADD FIELD "SalesPersonName" OF "gi_data_airline" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Sales Person Name"
+  POSITION 14
+  MAX-WIDTH 200
+  ORDER 130
+
+ADD FIELD "IssuedDate" OF "gi_data_airline" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Issued Date"
+  POSITION 15
+  MAX-WIDTH 4
+  ORDER 140
+
+ADD FIELD "NoOfSegments" OF "gi_data_airline" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "NoOf Segments"
+  POSITION 16
+  MAX-WIDTH 4
+  ORDER 150
+
+ADD FIELD "Segments" OF "gi_data_airline" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Segments"
+  POSITION 17
+  MAX-WIDTH 40
+  ORDER 160
+
+ADD FIELD "BasicAmt" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Basic Amt"
+  POSITION 18
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 170
+
+ADD FIELD "Tax" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Tax"
+  POSITION 19
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 180
+
+ADD FIELD "TopUpAmt" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "TopUpAmt"
+  POSITION 20
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 190
+
+ADD FIELD "MTAgentComm" OF "gi_data_airline" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "MT Agent Comm"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 200
+
+ADD FIELD "TransFee" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Trans Fee"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 210
+
+ADD FIELD "Penalty" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Penalty"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 220
+
+ADD FIELD "AgentComm" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 230
+
+ADD FIELD "CollectFromAgent" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 25
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 240
+
+ADD FIELD "SupplierComm" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 26
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 250
+
+ADD FIELD "PayableToAirline" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Airline"
+  POSITION 27
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 260
+
+ADD FIELD "SegmentFee" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Segment Fee"
+  POSITION 28
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 270
+
+ADD FIELD "Profit" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 29
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 280
+
+ADD FIELD "ClassCode" OF "gi_data_airline" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Class Code"
+  POSITION 30
+  MAX-WIDTH 16
+  ORDER 290
+
+ADD FIELD "YearMonth" OF "gi_data_airline" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 31
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_airline" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 32
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "ErrorTxt" OF "gi_data_airline" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Error Text"
+  POSITION 33
+  MAX-WIDTH 100
+  ORDER 320
+
+ADD FIELD "IssuedDate-Txt" OF "gi_data_airline" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Issued Date - Txt"
+  POSITION 34
+  MAX-WIDTH 30
+  ORDER 330
+
+ADD FIELD "temp-date" OF "gi_data_airline" AS date 
+  FORMAT "99/99/99"
+  INITIAL ?
+  LABEL "temp date"
+  POSITION 35
+  MAX-WIDTH 4
+  ORDER 340
+
+ADD FIELD "TopUpAmt1" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "TopUpAmt"
+  POSITION 36
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 350
+
+ADD FIELD "MTAgentComm1" OF "gi_data_airline" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "MT Agent Comm"
+  POSITION 37
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 360
+
+ADD FIELD "TransFee1" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Trans Fee"
+  POSITION 38
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 370
+
+ADD FIELD "AgentComm1" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 39
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 380
+
+ADD FIELD "CollectFromAgent1" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 40
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 390
+
+ADD FIELD "SupplierComm1" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 41
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 400
+
+ADD FIELD "PayableToAirline1" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Airline"
+  POSITION 42
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 410
+
+ADD FIELD "SegmentFee1" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Segment Fee"
+  POSITION 43
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 420
+
+ADD FIELD "InputVat" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 44
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 45
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 46
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 47
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_airline" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 48
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "party-name" OF "gi_data_airline" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 49
+  MAX-WIDTH 200
+  ORDER 480
+
+ADD INDEX "idx" ON "gi_data_airline" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "airline-cons" ASCENDING 
+
+ADD INDEX "idx1" ON "gi_data_airline" 
+  AREA "Schema Area"
+  INDEX-FIELD "YearMonthFN" ASCENDING 
+  INDEX-FIELD "IATAStock" ASCENDING 
+
+ADD TABLE "gi_data_airline_sum"
+  AREA "Schema Area"
+  DUMP-NAME "gi_data_airline_sum"
+
+ADD FIELD "IATAStock" OF "gi_data_airline_sum" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  POSITION 2
+  MAX-WIDTH 40
+  ORDER 60
+
+ADD FIELD "BasicAmt" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Basic Amt"
+  POSITION 3
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 170
+
+ADD FIELD "Tax" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Tax"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 180
+
+ADD FIELD "TopUpAmt" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "TopUpAmt"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 190
+
+ADD FIELD "MTAgentComm" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "MT Agent Comm"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 200
+
+ADD FIELD "TransFee" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Trans Fee"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 210
+
+ADD FIELD "Penalty" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Penalty"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 220
+
+ADD FIELD "AgentComm" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 230
+
+ADD FIELD "CollectFromAgent" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 240
+
+ADD FIELD "SupplierComm" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 250
+
+ADD FIELD "PayableToAirline" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Airline"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 260
+
+ADD FIELD "SegmentFee" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Segment Fee"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 270
+
+ADD FIELD "Profit" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 14
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 280
+
+ADD FIELD "YearMonth" OF "gi_data_airline_sum" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 15
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_airline_sum" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 16
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "TopUpAmt1" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "TopUpAmt"
+  POSITION 17
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 350
+
+ADD FIELD "MTAgentComm1" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "MT Agent Comm"
+  POSITION 18
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 360
+
+ADD FIELD "TransFee1" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Trans Fee"
+  POSITION 19
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 370
+
+ADD FIELD "AgentComm1" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 20
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 380
+
+ADD FIELD "CollectFromAgent1" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 390
+
+ADD FIELD "SupplierComm1" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 400
+
+ADD FIELD "PayableToAirline1" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Airline"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 410
+
+ADD FIELD "SegmentFee1" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Segment Fee"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 420
+
+ADD FIELD "InputVat" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 25
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 26
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 27
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 28
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_airline_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 29
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "airline-sum-cons" OF "gi_data_airline_sum" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 30
+  MAX-WIDTH 4
+  ORDER 480
+
+ADD FIELD "party-name" OF "gi_data_airline_sum" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 31
+  MAX-WIDTH 200
+  ORDER 490
+
+ADD FIELD "LastVchId" OF "gi_data_airline_sum" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Last Vou Id"
+  POSITION 32
+  MAX-WIDTH 60
+  ORDER 500
+
+ADD INDEX "idx" ON "gi_data_airline_sum" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "IATAStock" ASCENDING 
+  INDEX-FIELD "YearMonthFN" ASCENDING 
+
+ADD TABLE "gi_data_airline_sum1"
+  AREA "Schema Area"
+  DUMP-NAME "gi_data_airline_sum1"
+
+ADD FIELD "IATAStock" OF "gi_data_airline_sum1" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  POSITION 2
+  MAX-WIDTH 40
+  ORDER 60
+
+ADD FIELD "BasicAmt" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Basic Amt"
+  POSITION 3
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 170
+
+ADD FIELD "Tax" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Tax"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 180
+
+ADD FIELD "TopUpAmt" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "TopUpAmt"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 190
+
+ADD FIELD "MTAgentComm" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "MT Agent Comm"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 200
+
+ADD FIELD "TransFee" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Trans Fee"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 210
+
+ADD FIELD "Penalty" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Penalty"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 220
+
+ADD FIELD "AgentComm" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 230
+
+ADD FIELD "CollectFromAgent" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 240
+
+ADD FIELD "SupplierComm" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 250
+
+ADD FIELD "PayableToAirline" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Airline"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 260
+
+ADD FIELD "SegmentFee" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Segment Fee"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 270
+
+ADD FIELD "Profit" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 14
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 280
+
+ADD FIELD "YearMonth" OF "gi_data_airline_sum1" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 15
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_airline_sum1" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 16
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "TopUpAmt1" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "TopUpAmt"
+  POSITION 17
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 350
+
+ADD FIELD "MTAgentComm1" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "MT Agent Comm"
+  POSITION 18
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 360
+
+ADD FIELD "TransFee1" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Trans Fee"
+  POSITION 19
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 370
+
+ADD FIELD "AgentComm1" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 20
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 380
+
+ADD FIELD "CollectFromAgent1" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 390
+
+ADD FIELD "SupplierComm1" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 400
+
+ADD FIELD "PayableToAirline1" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Airline"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 410
+
+ADD FIELD "SegmentFee1" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Segment Fee"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 420
+
+ADD FIELD "InputVat" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 25
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 26
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 27
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 28
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_airline_sum1" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 29
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "airline-sum1-cons" OF "gi_data_airline_sum1" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 30
+  MAX-WIDTH 4
+  ORDER 480
+
+ADD FIELD "AirlinesName" OF "gi_data_airline_sum1" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "AirlinesName"
+  POSITION 31
+  MAX-WIDTH 40
+  ORDER 490
+
+ADD FIELD "party-name" OF "gi_data_airline_sum1" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 32
+  MAX-WIDTH 200
+  ORDER 500
+
+ADD INDEX "idx" ON "gi_data_airline_sum1" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "YearMonthFN" ASCENDING 
+  INDEX-FIELD "AirlinesName" ASCENDING 
+
+ADD TABLE "gi_data_bus"
+  AREA "Schema Area"
+  DUMP-NAME "gi_data_bus"
+
+ADD FIELD "bus-cons" OF "gi_data_bus" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "YearMonth" OF "gi_data_bus" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 3
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_bus" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 4
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "ErrorTxt" OF "gi_data_bus" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Error Text"
+  POSITION 5
+  MAX-WIDTH 100
+  ORDER 320
+
+ADD FIELD "TranDate-Txt" OF "gi_data_bus" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Issued Date - Txt"
+  POSITION 6
+  MAX-WIDTH 30
+  ORDER 330
+
+ADD FIELD "InputVat" OF "gi_data_bus" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_bus" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_bus" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_bus" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_bus" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "date1" OF "gi_data_bus" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Date"
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 480
+
+ADD FIELD "TravelAgentId" OF "gi_data_bus" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Travel Agent ID"
+  POSITION 13
+  MAX-WIDTH 100
+  ORDER 490
+
+ADD FIELD "CompanyName" OF "gi_data_bus" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Company Name"
+  POSITION 14
+  MAX-WIDTH 100
+  ORDER 500
+
+ADD FIELD "TerminalId" OF "gi_data_bus" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Terminal Id"
+  POSITION 15
+  MAX-WIDTH 100
+  ORDER 510
+
+ADD FIELD "TerminalName" OF "gi_data_bus" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Terminal Name"
+  POSITION 16
+  MAX-WIDTH 100
+  ORDER 520
+
+ADD FIELD "TransType" OF "gi_data_bus" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Trans Type"
+  POSITION 17
+  MAX-WIDTH 30
+  ORDER 530
+
+ADD FIELD "TransactionId" OF "gi_data_bus" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Transaction ID"
+  POSITION 18
+  MAX-WIDTH 30
+  ORDER 540
+
+ADD FIELD "TransportPnr" OF "gi_data_bus" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Transport Pnr"
+  POSITION 19
+  MAX-WIDTH 40
+  ORDER 550
+
+ADD FIELD "Amount" OF "gi_data_bus" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Amount"
+  POSITION 20
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "ServiceCharge" OF "gi_data_bus" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Service Charge"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "GrossAmount" OF "gi_data_bus" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Gross Amount"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "SupplierComm" OF "gi_data_bus" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "AgentComm" OF "gi_data_bus" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "CollectFromAgent" OF "gi_data_bus" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 25
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "Payable" OF "gi_data_bus" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable"
+  POSITION 26
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 620
+
+ADD FIELD "Profit" OF "gi_data_bus" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 27
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 630
+
+ADD FIELD "bus-sr-no" OF "gi_data_bus" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Sr No"
+  POSITION 28
+  MAX-WIDTH 4
+  ORDER 640
+
+ADD FIELD "party-name" OF "gi_data_bus" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 29
+  MAX-WIDTH 200
+  ORDER 650
+
+ADD INDEX "idx" ON "gi_data_bus" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "bus-cons" ASCENDING 
+
+ADD TABLE "gi_data_bus_sum"
+  AREA "Schema Area"
+  LABEL "Bus summary"
+  DUMP-NAME "gi_data_bus_sum"
+
+ADD FIELD "YearMonth" OF "gi_data_bus_sum" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 2
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_bus_sum" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 3
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "InputVat" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "Amount" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Amount"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "ServiceCharge" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Service Charge"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "GrossAmount" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Gross Amount"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "SupplierComm" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "AgentComm" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "CollectFromAgent" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 14
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "Payable" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable"
+  POSITION 15
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 620
+
+ADD FIELD "Profit" OF "gi_data_bus_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 16
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 630
+
+ADD FIELD "party-name" OF "gi_data_bus_sum" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 17
+  MAX-WIDTH 200
+  ORDER 650
+
+ADD FIELD "LastVchId" OF "gi_data_bus_sum" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Last Vou Id"
+  POSITION 18
+  MAX-WIDTH 60
+  ORDER 660
+
+ADD INDEX "idx" ON "gi_data_bus_sum" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "YearMonthFN" ASCENDING 
+  INDEX-FIELD "party-name" ASCENDING 
+
+ADD TABLE "gi_data_ecpay"
+  AREA "Schema Area"
+  DUMP-NAME "gi_data_ecpay"
+
+ADD FIELD "ecpay-cons" OF "gi_data_ecpay" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "YearMonth" OF "gi_data_ecpay" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 3
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_ecpay" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 4
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "ErrorTxt" OF "gi_data_ecpay" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Error Text"
+  POSITION 5
+  MAX-WIDTH 100
+  ORDER 320
+
+ADD FIELD "TranDate-Txt" OF "gi_data_ecpay" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Issued Date - Txt"
+  POSITION 6
+  MAX-WIDTH 30
+  ORDER 330
+
+ADD FIELD "InputVat" OF "gi_data_ecpay" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_ecpay" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_ecpay" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_ecpay" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_ecpay" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "date1" OF "gi_data_ecpay" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Date"
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 480
+
+ADD FIELD "ecpay-sr-no" OF "gi_data_ecpay" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Sr No"
+  POSITION 13
+  MAX-WIDTH 4
+  ORDER 490
+
+ADD FIELD "TravelAgentId" OF "gi_data_ecpay" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "TravelAgentId"
+  POSITION 14
+  MAX-WIDTH 40
+  ORDER 500
+
+ADD FIELD "CompanyName" OF "gi_data_ecpay" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Company Name"
+  POSITION 15
+  MAX-WIDTH 200
+  ORDER 510
+
+ADD FIELD "TraceNumber" OF "gi_data_ecpay" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "TraceNumber"
+  POSITION 16
+  MAX-WIDTH 40
+  ORDER 520
+
+ADD FIELD "CustomerId" OF "gi_data_ecpay" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "CustomerId"
+  POSITION 17
+  MAX-WIDTH 40
+  ORDER 530
+
+ADD FIELD "BiyahekoPNR" OF "gi_data_ecpay" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Biyaheko PNR"
+  POSITION 18
+  MAX-WIDTH 40
+  ORDER 540
+
+ADD FIELD "TotalAmount" OF "gi_data_ecpay" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Amount"
+  POSITION 19
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 550
+
+ADD FIELD "ConvenienceFee" OF "gi_data_ecpay" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Convenience Fee"
+  POSITION 20
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "PayableToOperator" OF "gi_data_ecpay" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Operator"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "AgentComm" OF "gi_data_ecpay" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Commission"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "MtAgentComm" OF "gi_data_ecpay" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "MtAgent Commission"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "Profit" OF "gi_data_ecpay" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "party-name" OF "gi_data_ecpay" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 25
+  MAX-WIDTH 200
+  ORDER 610
+
+ADD INDEX "idx" ON "gi_data_ecpay" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "ecpay-cons" ASCENDING 
+
+ADD TABLE "gi_data_ecpay_sum"
+  AREA "Schema Area"
+  DUMP-NAME "gi_data_ecpay_sum"
+
+ADD FIELD "YearMonth" OF "gi_data_ecpay_sum" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 2
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_ecpay_sum" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 3
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "InputVat" OF "gi_data_ecpay_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_ecpay_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_ecpay_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_ecpay_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_ecpay_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "date1" OF "gi_data_ecpay_sum" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Date"
+  POSITION 9
+  MAX-WIDTH 4
+  ORDER 480
+
+ADD FIELD "ecpay-sr-no" OF "gi_data_ecpay_sum" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Sr No"
+  POSITION 10
+  MAX-WIDTH 4
+  ORDER 490
+
+ADD FIELD "TotalAmount" OF "gi_data_ecpay_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Amount"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 550
+
+ADD FIELD "ConvenienceFee" OF "gi_data_ecpay_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Convenience Fee"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "PayableToOperator" OF "gi_data_ecpay_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Operator"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "AgentComm" OF "gi_data_ecpay_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Commission"
+  POSITION 14
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "MtAgentComm" OF "gi_data_ecpay_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "MtAgent Commission"
+  POSITION 15
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "Profit" OF "gi_data_ecpay_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 16
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "party-name" OF "gi_data_ecpay_sum" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 17
+  MAX-WIDTH 200
+  ORDER 610
+
+ADD FIELD "LastVchId" OF "gi_data_ecpay_sum" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Last Vou Id"
+  POSITION 18
+  MAX-WIDTH 60
+  ORDER 620
+
+ADD INDEX "idx" ON "gi_data_ecpay_sum" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "YearMonthFN" ASCENDING 
+  INDEX-FIELD "party-name" ASCENDING 
+
+ADD TABLE "gi_data_ferry"
+  AREA "Schema Area"
+  DUMP-NAME "gi_data_ferry"
+
+ADD FIELD "ferry-cons" OF "gi_data_ferry" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "YearMonth" OF "gi_data_ferry" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 3
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_ferry" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 4
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "ErrorTxt" OF "gi_data_ferry" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Error Text"
+  POSITION 5
+  MAX-WIDTH 100
+  ORDER 320
+
+ADD FIELD "TranDate-Txt" OF "gi_data_ferry" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Issued Date - Txt"
+  POSITION 6
+  MAX-WIDTH 30
+  ORDER 330
+
+ADD FIELD "InputVat" OF "gi_data_ferry" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_ferry" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_ferry" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_ferry" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_ferry" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "date1" OF "gi_data_ferry" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Date"
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 480
+
+ADD FIELD "TerminalId" OF "gi_data_ferry" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Terminal Id"
+  POSITION 13
+  MAX-WIDTH 40
+  ORDER 490
+
+ADD FIELD "TerminalName" OF "gi_data_ferry" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Terminal Name"
+  POSITION 14
+  MAX-WIDTH 100
+  ORDER 500
+
+ADD FIELD "ConfirmationNo" OF "gi_data_ferry" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Confirmation No"
+  POSITION 15
+  MAX-WIDTH 40
+  ORDER 510
+
+ADD FIELD "TravelType" OF "gi_data_ferry" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Travel Type"
+  POSITION 16
+  MAX-WIDTH 16
+  ORDER 520
+
+ADD FIELD "TransType" OF "gi_data_ferry" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Trans Type"
+  POSITION 17
+  MAX-WIDTH 16
+  ORDER 530
+
+ADD FIELD "NoOfSegment" OF "gi_data_ferry" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "No of Segment"
+  POSITION 18
+  MAX-WIDTH 4
+  ORDER 540
+
+ADD FIELD "NetFare" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Net Fare"
+  POSITION 19
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 550
+
+ADD FIELD "ScDiscount" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "SC Discount"
+  POSITION 20
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "DiscountFare" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Discount Fare"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "Fuel" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Fuel"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "SecurityFee" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Security Fee"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "TerminalFee" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Terminal Fee"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "Meal" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Meal"
+  POSITION 25
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "Insurance" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Insurnace"
+  POSITION 26
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 620
+
+ADD FIELD "Linen" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Linen\"
+  POSITION 27
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 630
+
+ADD FIELD "VatableAmount" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Vatable Amount"
+  POSITION 28
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 640
+
+ADD FIELD "Vat" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Vat"
+  POSITION 29
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 650
+
+ADD FIELD "VatExempt" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Vat Exempt"
+  POSITION 30
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 660
+
+ADD FIELD "ZeroVat" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Zero Vat"
+  POSITION 31
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 670
+
+ADD FIELD "TransactionFee" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Transaction Fee"
+  POSITION 32
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 680
+
+ADD FIELD "Penalty" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Penalty"
+  POSITION 33
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 690
+
+ADD FIELD "HandlingFee" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Handling Fee"
+  POSITION 34
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 700
+
+ADD FIELD "CollectFromAgent" OF "gi_data_ferry" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 35
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 710
+
+ADD FIELD "Payable" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable"
+  POSITION 36
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 720
+
+ADD FIELD "Profit" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 37
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 730
+
+ADD FIELD "SupplierComm" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 38
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 740
+
+ADD FIELD "AgentComm" OF "gi_data_ferry" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 39
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 750
+
+ADD FIELD "Operator" OF "gi_data_ferry" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Operator"
+  POSITION 40
+  MAX-WIDTH 100
+  ORDER 760
+
+ADD FIELD "party-name" OF "gi_data_ferry" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 41
+  MAX-WIDTH 200
+  ORDER 770
+
+ADD FIELD "TravelAgentId" OF "gi_data_ferry" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Travel Agent ID"
+  POSITION 42
+  MAX-WIDTH 40
+  ORDER 780
+
+ADD FIELD "AgentName" OF "gi_data_ferry" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Agent Name"
+  POSITION 43
+  MAX-WIDTH 100
+  ORDER 790
+
+ADD INDEX "idx" ON "gi_data_ferry" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "ferry-cons" ASCENDING 
+
+ADD TABLE "gi_data_ferry_sum"
+  AREA "Schema Area"
+  LABEL "Ferry Summary"
+  DUMP-NAME "gi_data_ferry_sum"
+
+ADD FIELD "YearMonth" OF "gi_data_ferry_sum" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 2
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_ferry_sum" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 3
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "InputVat" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "NetFare" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Net Fare"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 550
+
+ADD FIELD "ScDiscount" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "SC Discount"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "DiscountFare" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Discount Fare"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "Fuel" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Fuel"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "SecurityFee" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Security Fee"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "TerminalFee" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Terminal Fee"
+  POSITION 14
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "Meal" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Meal"
+  POSITION 15
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "Insurance" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Insurnace"
+  POSITION 16
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 620
+
+ADD FIELD "Linen" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Linen\"
+  POSITION 17
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 630
+
+ADD FIELD "VatableAmount" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Vatable Amount"
+  POSITION 18
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 640
+
+ADD FIELD "Vat" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Vat"
+  POSITION 19
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 650
+
+ADD FIELD "VatExempt" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Vat Exempt"
+  POSITION 20
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 660
+
+ADD FIELD "ZeroVat" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Zero Vat"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 670
+
+ADD FIELD "TransactionFee" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Transaction Fee"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 680
+
+ADD FIELD "Penalty" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Penalty"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 690
+
+ADD FIELD "HandlingFee" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Handling Fee"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 700
+
+ADD FIELD "CollectFromAgent" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 25
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 710
+
+ADD FIELD "Payable" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable"
+  POSITION 26
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 720
+
+ADD FIELD "Profit" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 27
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 730
+
+ADD FIELD "SupplierComm" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 28
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 740
+
+ADD FIELD "AgentComm" OF "gi_data_ferry_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 29
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 750
+
+ADD FIELD "Operator" OF "gi_data_ferry_sum" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Operator"
+  POSITION 30
+  MAX-WIDTH 100
+  ORDER 760
+
+ADD FIELD "party-name" OF "gi_data_ferry_sum" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 31
+  MAX-WIDTH 200
+  ORDER 770
+
+ADD FIELD "LastVchId" OF "gi_data_ferry_sum" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Last Vou Id"
+  POSITION 32
+  MAX-WIDTH 60
+  ORDER 780
+
+ADD INDEX "idx" ON "gi_data_ferry_sum" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "YearMonthFN" ASCENDING 
+  INDEX-FIELD "party-name" ASCENDING 
+
+ADD TABLE "gi_data_hotel"
+  AREA "Schema Area"
+  DUMP-NAME "gi_data_hotel"
+
+ADD FIELD "hotel-cons" OF "gi_data_hotel" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "YearMonth" OF "gi_data_hotel" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 3
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_hotel" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 4
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "ErrorTxt" OF "gi_data_hotel" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Error Text"
+  POSITION 5
+  MAX-WIDTH 100
+  ORDER 320
+
+ADD FIELD "TranDate-Txt" OF "gi_data_hotel" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Tran Date - Txt"
+  POSITION 6
+  MAX-WIDTH 30
+  ORDER 330
+
+ADD FIELD "InputVat" OF "gi_data_hotel" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_hotel" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_hotel" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_hotel" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_hotel" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "date1" OF "gi_data_hotel" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Date"
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 480
+
+ADD FIELD "TransType" OF "gi_data_hotel" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Trans. Type"
+  POSITION 13
+  MAX-WIDTH 16
+  ORDER 490
+
+ADD FIELD "TerminalId" OF "gi_data_hotel" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Terminal Id"
+  POSITION 14
+  MAX-WIDTH 100
+  ORDER 500
+
+ADD FIELD "TransactionId" OF "gi_data_hotel" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Transaction Id"
+  POSITION 15
+  MAX-WIDTH 100
+  ORDER 510
+
+ADD FIELD "HotelName" OF "gi_data_hotel" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Hotel Name"
+  POSITION 16
+  MAX-WIDTH 16
+  ORDER 520
+
+ADD FIELD "OperatorName" OF "gi_data_hotel" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Operator Name"
+  POSITION 17
+  MAX-WIDTH 100
+  ORDER 530
+
+ADD FIELD "AgentComm" OF "gi_data_hotel" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 18
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 540
+
+ADD FIELD "CollectFromAgent" OF "gi_data_hotel" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 19
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 550
+
+ADD FIELD "PayableToOperate" OF "gi_data_hotel" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Operate"
+  POSITION 20
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "MTAgentComm" OF "gi_data_hotel" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "MT Agent Comm"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "Profit" OF "gi_data_hotel" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "party-name" OF "gi_data_hotel" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 23
+  MAX-WIDTH 200
+  ORDER 590
+
+ADD FIELD "CompanyName" OF "gi_data_hotel" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Company Name"
+  POSITION 24
+  MAX-WIDTH 100
+  ORDER 600
+
+ADD INDEX "idx" ON "gi_data_hotel" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "hotel-cons" ASCENDING 
+
+ADD TABLE "gi_data_hotel_sum"
+  AREA "Schema Area"
+  LABEL "Hotel Summary"
+  DUMP-NAME "gi_data_hotel_sum"
+
+ADD FIELD "YearMonth" OF "gi_data_hotel_sum" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 2
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_hotel_sum" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 3
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "InputVat" OF "gi_data_hotel_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_hotel_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_hotel_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_hotel_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_hotel_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "AgentComm" OF "gi_data_hotel_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 540
+
+ADD FIELD "CollectFromAgent" OF "gi_data_hotel_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 550
+
+ADD FIELD "PayableToOperate" OF "gi_data_hotel_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Operate"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "MTAgentComm" OF "gi_data_hotel_sum" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "MT Agent Comm"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "Profit" OF "gi_data_hotel_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "party-name" OF "gi_data_hotel_sum" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 14
+  MAX-WIDTH 200
+  ORDER 590
+
+ADD FIELD "LastVchId" OF "gi_data_hotel_sum" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Last Vou Id"
+  POSITION 15
+  MAX-WIDTH 60
+  ORDER 600
+
+ADD INDEX "idx" ON "gi_data_hotel_sum" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "YearMonthFN" ASCENDING 
+  INDEX-FIELD "party-name" ASCENDING 
+
+ADD TABLE "gi_data_insurance"
+  AREA "Schema Area"
+  DUMP-NAME "gi_data_insurance"
+
+ADD FIELD "insurance-cons" OF "gi_data_insurance" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "YearMonth" OF "gi_data_insurance" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 3
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_insurance" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 4
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "ErrorTxt" OF "gi_data_insurance" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Error Text"
+  POSITION 5
+  MAX-WIDTH 100
+  ORDER 320
+
+ADD FIELD "TranDate-Txt" OF "gi_data_insurance" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Tran Date - Txt"
+  POSITION 6
+  MAX-WIDTH 30
+  ORDER 330
+
+ADD FIELD "InputVat" OF "gi_data_insurance" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_insurance" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_insurance" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_insurance" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_insurance" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "date1" OF "gi_data_insurance" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Date"
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 480
+
+ADD FIELD "AgentName" OF "gi_data_insurance" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "AgentName"
+  POSITION 13
+  MAX-WIDTH 200
+  ORDER 490
+
+ADD FIELD "TravelAgentId" OF "gi_data_insurance" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "TravelAgentId"
+  POSITION 14
+  MAX-WIDTH 40
+  ORDER 500
+
+ADD FIELD "TerminalId" OF "gi_data_insurance" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Terminal Id"
+  POSITION 15
+  MAX-WIDTH 100
+  ORDER 510
+
+ADD FIELD "TerminalName" OF "gi_data_insurance" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Terminal"
+  POSITION 16
+  MAX-WIDTH 100
+  ORDER 520
+
+ADD FIELD "PolicyNo" OF "gi_data_insurance" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Policy No"
+  POSITION 17
+  MAX-WIDTH 40
+  ORDER 530
+
+ADD FIELD "PassengerName" OF "gi_data_insurance" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Passenger Name"
+  POSITION 18
+  MAX-WIDTH 100
+  ORDER 540
+
+ADD FIELD "BkPnr" OF "gi_data_insurance" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Bk Pnr"
+  POSITION 19
+  MAX-WIDTH 30
+  ORDER 550
+
+ADD FIELD "TotalPremiumAmount" OF "gi_data_insurance" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Tot Premium Amt"
+  POSITION 20
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "SupplierComm" OF "gi_data_insurance" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "AgentComm" OF "gi_data_insurance" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "CollectFromAgent" OF "gi_data_insurance" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "PayableToSupplier" OF "gi_data_insurance" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Airline"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "Profit" OF "gi_data_insurance" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 25
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "party-name" OF "gi_data_insurance" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 26
+  MAX-WIDTH 200
+  ORDER 620
+
+ADD INDEX "idx" ON "gi_data_insurance" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "insurance-cons" ASCENDING 
+
+ADD TABLE "gi_data_insurance_sum"
+  AREA "Schema Area"
+  LABEL "Insurance Summary"
+  DUMP-NAME "gi_data_insurance_sum"
+
+ADD FIELD "YearMonth" OF "gi_data_insurance_sum" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 2
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_insurance_sum" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 3
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "InputVat" OF "gi_data_insurance_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_insurance_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_insurance_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_insurance_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_insurance_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "TotalPremiumAmount" OF "gi_data_insurance_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Tot Premium Amt"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "SupplierComm" OF "gi_data_insurance_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "AgentComm" OF "gi_data_insurance_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "CollectFromAgent" OF "gi_data_insurance_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "PayableToSupplier" OF "gi_data_insurance_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable to Airline"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "Profit" OF "gi_data_insurance_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 14
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "party-name" OF "gi_data_insurance_sum" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 15
+  MAX-WIDTH 200
+  ORDER 620
+
+ADD FIELD "LastVchId" OF "gi_data_insurance_sum" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Last Vou Id"
+  POSITION 16
+  MAX-WIDTH 60
+  ORDER 630
+
+ADD INDEX "idx" ON "gi_data_insurance_sum" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "YearMonthFN" ASCENDING 
+  INDEX-FIELD "party-name" ASCENDING 
+
+ADD TABLE "gi_data_mobile"
+  AREA "Schema Area"
+  DUMP-NAME "gi_data_mobile"
+
+ADD FIELD "mobile-cons" OF "gi_data_mobile" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "YearMonth" OF "gi_data_mobile" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 3
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_mobile" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 4
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "ErrorTxt" OF "gi_data_mobile" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Error Text"
+  POSITION 5
+  MAX-WIDTH 100
+  ORDER 320
+
+ADD FIELD "TranDate-Txt" OF "gi_data_mobile" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Tran Date - Txt"
+  POSITION 6
+  MAX-WIDTH 30
+  ORDER 330
+
+ADD FIELD "InputVat" OF "gi_data_mobile" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_mobile" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_mobile" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_mobile" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_mobile" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "date1" OF "gi_data_mobile" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Date"
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 480
+
+ADD FIELD "AgentName" OF "gi_data_mobile" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Agent Name"
+  POSITION 13
+  MAX-WIDTH 100
+  ORDER 490
+
+ADD FIELD "GroupDesc" OF "gi_data_mobile" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Group Desc"
+  POSITION 14
+  MAX-WIDTH 100
+  ORDER 500
+
+ADD FIELD "ItemDesc" OF "gi_data_mobile" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Item Desc"
+  POSITION 15
+  MAX-WIDTH 100
+  ORDER 510
+
+ADD FIELD "TransNo" OF "gi_data_mobile" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Trans No"
+  POSITION 16
+  MAX-WIDTH 40
+  ORDER 520
+
+ADD FIELD "MobileNo" OF "gi_data_mobile" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Mobile No"
+  POSITION 17
+  MAX-WIDTH 40
+  ORDER 530
+
+ADD FIELD "RechargeDateTxt" OF "gi_data_mobile" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Recharge Date"
+  POSITION 18
+  MAX-WIDTH 30
+  ORDER 540
+
+ADD FIELD "MrpValue" OF "gi_data_mobile" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "MRP Value"
+  POSITION 19
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 550
+
+ADD FIELD "SupplierComm" OF "gi_data_mobile" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 20
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "Payable" OF "gi_data_mobile" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "AgentComm" OF "gi_data_mobile" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "CollectFromAgent1" OF "gi_data_mobile" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "TotalTssComm" OF "gi_data_mobile" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Total TSS Comm"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "Profit" OF "gi_data_mobile" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 25
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "party-name" OF "gi_data_mobile" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 26
+  MAX-WIDTH 200
+  ORDER 620
+
+ADD FIELD "Collectable" OF "gi_data_mobile" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Collectable"
+  POSITION 27
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 630
+
+ADD INDEX "idx" ON "gi_data_mobile" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "mobile-cons" ASCENDING 
+
+ADD TABLE "gi_data_mobile_sum"
+  AREA "Schema Area"
+  LABEL "Mobile Summary"
+  DUMP-NAME "gi_data_mobile_sum"
+
+ADD FIELD "YearMonth" OF "gi_data_mobile_sum" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 2
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_mobile_sum" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 3
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "InputVat" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "MrpValue" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "MRP Value"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 550
+
+ADD FIELD "SupplierComm" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Supplier Comm"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 560
+
+ADD FIELD "Payable" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "AgentComm" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "CollectFromAgent1" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "TotalTssComm" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Total TSS Comm"
+  POSITION 14
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "Profit" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 15
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "party-name" OF "gi_data_mobile_sum" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 16
+  MAX-WIDTH 200
+  ORDER 620
+
+ADD FIELD "Collectable" OF "gi_data_mobile_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Collectable"
+  POSITION 17
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 630
+
+ADD FIELD "LastVchId" OF "gi_data_mobile_sum" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Last Vou Id"
+  POSITION 18
+  MAX-WIDTH 60
+  ORDER 640
+
+ADD INDEX "idx" ON "gi_data_mobile_sum" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "YearMonthFN" ASCENDING 
+  INDEX-FIELD "party-name" ASCENDING 
+
+ADD TABLE "gi_data_packages"
+  AREA "Schema Area"
+  DUMP-NAME "gi_data_packages"
+
+ADD FIELD "packages-cons" OF "gi_data_packages" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "YearMonth" OF "gi_data_packages" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 3
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_packages" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 4
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "ErrorTxt" OF "gi_data_packages" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Error Text"
+  POSITION 5
+  MAX-WIDTH 100
+  ORDER 320
+
+ADD FIELD "TranDate-Txt" OF "gi_data_packages" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Tran Date - Txt"
+  POSITION 6
+  MAX-WIDTH 30
+  ORDER 330
+
+ADD FIELD "InputVat" OF "gi_data_packages" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_packages" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_packages" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_packages" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_packages" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "BookingType" OF "gi_data_packages" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Booking Type"
+  POSITION 12
+  MAX-WIDTH 16
+  ORDER 480
+
+ADD FIELD "TransId" OF "gi_data_packages" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Trans Id"
+  POSITION 13
+  MAX-WIDTH 30
+  ORDER 490
+
+ADD FIELD "TravelAgentId" OF "gi_data_packages" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Travel Agent ID"
+  POSITION 14
+  MAX-WIDTH 100
+  ORDER 500
+
+ADD FIELD "TerminalId" OF "gi_data_packages" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Terminal Id"
+  POSITION 15
+  MAX-WIDTH 100
+  ORDER 510
+
+ADD FIELD "CollectFromAgent" OF "gi_data_packages" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 16
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 520
+
+ADD FIELD "Payable" OF "gi_data_packages" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable"
+  POSITION 17
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 530
+
+ADD FIELD "PackageSupplier" OF "gi_data_packages" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Package Supplier"
+  POSITION 18
+  MAX-WIDTH 100
+  ORDER 540
+
+ADD FIELD "PackageType" OF "gi_data_packages" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Package Type"
+  POSITION 19
+  MAX-WIDTH 16
+  ORDER 550
+
+ADD FIELD "PackageDescription" OF "gi_data_packages" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Pakage Discription"
+  POSITION 20
+  MAX-WIDTH 16
+  ORDER 560
+
+ADD FIELD "SellingPrice" OF "gi_data_packages" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Selling Price"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "VatCollectable" OF "gi_data_packages" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Vat Collectable"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "Markup" OF "gi_data_packages" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Markup"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "TotalCollectable" OF "gi_data_packages" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Collectable"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "TotalPayable" OF "gi_data_packages" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Payable"
+  POSITION 25
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "VATPayable" OF "gi_data_packages" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "VAT Payable"
+  POSITION 26
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 620
+
+ADD FIELD "AgentComm" OF "gi_data_packages" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 27
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 630
+
+ADD FIELD "MTagentComm" OF "gi_data_packages" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "MTagent Comm"
+  POSITION 28
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 640
+
+ADD FIELD "NoOfAdults" OF "gi_data_packages" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "No of Adults"
+  POSITION 29
+  MAX-WIDTH 4
+  ORDER 650
+
+ADD FIELD "TravelDate" OF "gi_data_packages" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Travel Date"
+  POSITION 30
+  MAX-WIDTH 4
+  ORDER 660
+
+ADD FIELD "BookedBy" OF "gi_data_packages" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Booked BY"
+  POSITION 31
+  MAX-WIDTH 40
+  ORDER 670
+
+ADD FIELD "date1" OF "gi_data_packages" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Date"
+  POSITION 32
+  MAX-WIDTH 4
+  ORDER 680
+
+ADD FIELD "party-name" OF "gi_data_packages" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 33
+  MAX-WIDTH 200
+  ORDER 690
+
+ADD FIELD "BookingDate" OF "gi_data_packages" AS date 
+  FORMAT "99/99/99"
+  INITIAL ?
+  LABEL "Booking Date"
+  POSITION 34
+  MAX-WIDTH 4
+  ORDER 700
+
+ADD FIELD "Profit" OF "gi_data_packages" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 35
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 710
+
+ADD INDEX "idx" ON "gi_data_packages" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "packages-cons" ASCENDING 
+
+ADD TABLE "gi_data_packages_sum"
+  AREA "Schema Area"
+  LABEL "Packages Summary"
+  DUMP-NAME "gi_data_packages_sum"
+
+ADD FIELD "YearMonth" OF "gi_data_packages_sum" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 2
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_packages_sum" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 3
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "InputVat" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "CollectFromAgent" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 520
+
+ADD FIELD "Payable" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 530
+
+ADD FIELD "SellingPrice" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Selling Price"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "VatCollectable" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Vat Collectable"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "Markup" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Markup"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "TotalCollectable" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Collectable"
+  POSITION 14
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "TotalPayable" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Payable"
+  POSITION 15
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "VATPayable" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "VAT Payable"
+  POSITION 16
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 620
+
+ADD FIELD "AgentComm" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 17
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 630
+
+ADD FIELD "MTagentComm" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "MTagent Comm"
+  POSITION 18
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 640
+
+ADD FIELD "party-name" OF "gi_data_packages_sum" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 19
+  MAX-WIDTH 200
+  ORDER 690
+
+ADD FIELD "Profit" OF "gi_data_packages_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 20
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 710
+
+ADD FIELD "LastVchId" OF "gi_data_packages_sum" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Last Vou Id"
+  POSITION 21
+  MAX-WIDTH 60
+  ORDER 720
+
+ADD INDEX "idx" ON "gi_data_packages_sum" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "YearMonthFN" ASCENDING 
+  INDEX-FIELD "party-name" ASCENDING 
+
+ADD TABLE "gi_data_visa"
+  AREA "Schema Area"
+  DUMP-NAME "gl_data_visa"
+
+ADD FIELD "visa-cons" OF "gi_data_visa" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "Cons"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "YearMonth" OF "gi_data_visa" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month"
+  POSITION 3
+  MAX-WIDTH 16
+  ORDER 300
+
+ADD FIELD "YearMonthFN" OF "gi_data_visa" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 4
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "ErrorTxt" OF "gi_data_visa" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Error Text"
+  POSITION 5
+  MAX-WIDTH 100
+  ORDER 320
+
+ADD FIELD "TranDate-Txt" OF "gi_data_visa" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Tran Date - Txt"
+  POSITION 6
+  MAX-WIDTH 30
+  ORDER 330
+
+ADD FIELD "InputVat" OF "gi_data_visa" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_visa" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_visa" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_visa" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_visa" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "visa-sr-no" OF "gi_data_visa" AS integer 
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Sr No"
+  POSITION 12
+  MAX-WIDTH 4
+  ORDER 480
+
+ADD FIELD "TravelAgentId" OF "gi_data_visa" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Travel Agent ID"
+  POSITION 13
+  MAX-WIDTH 100
+  ORDER 490
+
+ADD FIELD "AgentName" OF "gi_data_visa" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Agent Name"
+  POSITION 14
+  MAX-WIDTH 200
+  ORDER 500
+
+ADD FIELD "TerminalId" OF "gi_data_visa" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Terminal Id"
+  POSITION 15
+  MAX-WIDTH 100
+  ORDER 510
+
+ADD FIELD "TransactionId" OF "gi_data_visa" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Transaction Id"
+  POSITION 16
+  MAX-WIDTH 100
+  ORDER 520
+
+ADD FIELD "TypeOfVisa" OF "gi_data_visa" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Type of Visa"
+  POSITION 17
+  MAX-WIDTH 30
+  ORDER 530
+
+ADD FIELD "EnteredBy" OF "gi_data_visa" AS character 
+  FORMAT "x(15)"
+  INITIAL ""
+  LABEL "Entered By"
+  POSITION 18
+  MAX-WIDTH 30
+  ORDER 540
+
+ADD FIELD "Country" OF "gi_data_visa" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Country"
+  POSITION 19
+  MAX-WIDTH 100
+  ORDER 550
+
+ADD FIELD "Supplier" OF "gi_data_visa" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Supplier"
+  POSITION 20
+  MAX-WIDTH 40
+  ORDER 560
+
+ADD FIELD "SellingPrice" OF "gi_data_visa" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Selling Price"
+  POSITION 21
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "MarkUpAmount" OF "gi_data_visa" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "MarkUp Amount"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "GrossAmount" OF "gi_data_visa" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Gross Amount"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "AgentComm" OF "gi_data_visa" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "CollectFromAgent" OF "gi_data_visa" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 25
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "Payable" OF "gi_data_visa" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable"
+  POSITION 26
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 620
+
+ADD FIELD "Profit" OF "gi_data_visa" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 27
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 630
+
+ADD FIELD "CourierCharges" OF "gi_data_visa" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Courier Charges"
+  POSITION 28
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 640
+
+ADD FIELD "date1" OF "gi_data_visa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Date"
+  POSITION 29
+  MAX-WIDTH 4
+  ORDER 650
+
+ADD FIELD "Penalty" OF "gi_data_visa" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Penalty"
+  POSITION 30
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 660
+
+ADD FIELD "party-name" OF "gi_data_visa" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 31
+  MAX-WIDTH 200
+  ORDER 670
+
+ADD FIELD "TerminalName" OF "gi_data_visa" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Terminal Name"
+  POSITION 32
+  MAX-WIDTH 100
+  ORDER 680
+
+ADD INDEX "idx" ON "gi_data_visa" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "visa-cons" ASCENDING 
+
+ADD TABLE "gi_data_visa_sum"
+  AREA "Schema Area"
+  LABEL "Visa Summary"
+  DUMP-NAME "gi_data_visa_sum"
+
+ADD FIELD "YearMonthFN" OF "gi_data_visa_sum" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 2
+  MAX-WIDTH 24
+  HELP "Year Month and Forthnight"
+  ORDER 310
+
+ADD FIELD "InputVat" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Input Vat"
+  POSITION 3
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 430
+
+ADD FIELD "OutputVat" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Output Vat"
+  POSITION 4
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 440
+
+ADD FIELD "total-db" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Debit"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 450
+
+ADD FIELD "total-cr" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Total Credit"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 460
+
+ADD FIELD "total-db-cr-diff" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Debit Credit Diff"
+  POSITION 7
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 470
+
+ADD FIELD "SellingPrice" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Selling Price"
+  POSITION 8
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 570
+
+ADD FIELD "MarkUpAmount" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "MarkUp Amount"
+  POSITION 9
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 580
+
+ADD FIELD "GrossAmount" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Gross Amount"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 590
+
+ADD FIELD "AgentComm" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Agent Comm"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 600
+
+ADD FIELD "CollectFromAgent" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Coll From Agent"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 610
+
+ADD FIELD "Payable" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Payable"
+  POSITION 13
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 620
+
+ADD FIELD "Profit" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->,>>>,>>>,>>9.99"
+  INITIAL "0"
+  LABEL "Profit"
+  POSITION 14
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 630
+
+ADD FIELD "CourierCharges" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Courier Charges"
+  POSITION 15
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 640
+
+ADD FIELD "Penalty" OF "gi_data_visa_sum" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Penalty"
+  POSITION 16
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 660
+
+ADD FIELD "party-name" OF "gi_data_visa_sum" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 17
+  MAX-WIDTH 200
+  ORDER 670
+
+ADD FIELD "LastVchId" OF "gi_data_visa_sum" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Last Vou Id"
+  POSITION 18
+  MAX-WIDTH 60
+  ORDER 680
+
+ADD INDEX "idx" ON "gi_data_visa_sum" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "YearMonthFN" ASCENDING 
+  INDEX-FIELD "party-name" ASCENDING 
+
+ADD TABLE "gi_mt_agent"
+  AREA "Schema Area"
+  DUMP-NAME "gi_mt_agent"
+
+ADD FIELD "month" OF "gi_mt_agent" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Month"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+
+ADD FIELD "MTAgentName" OF "gi_mt_agent" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "MTAgentName"
+  POSITION 3
+  MAX-WIDTH 200
+  ORDER 20
+
+ADD FIELD "DateTime1" OF "gi_mt_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "DateTime 1"
+  POSITION 4
+  MAX-WIDTH 40
+  ORDER 30
+
+ADD FIELD "ODAmount" OF "gi_mt_agent" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "ODAmount"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 40
+
+ADD FIELD "Product" OF "gi_mt_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Product"
+  POSITION 6
+  MAX-WIDTH 40
+  ORDER 50
+
+ADD FIELD "Enteredby" OF "gi_mt_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Enteredby"
+  POSITION 7
+  MAX-WIDTH 40
+  ORDER 60
+
+ADD FIELD "Description" OF "gi_mt_agent" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Description"
+  POSITION 8
+  MAX-WIDTH 200
+  ORDER 70
+
+ADD FIELD "TransactionId" OF "gi_mt_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "TransactionId"
+  POSITION 9
+  MAX-WIDTH 40
+  ORDER 80
+
+ADD FIELD "CreditAmount" OF "gi_mt_agent" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "CreditAmount"
+  POSITION 10
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 90
+
+ADD FIELD "DebitAmount" OF "gi_mt_agent" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "DebitAmount"
+  POSITION 11
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 100
+
+ADD FIELD "MtAgentRemaining" OF "gi_mt_agent" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "MtAgentRemaining"
+  POSITION 12
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 110
+
+ADD FIELD "Remarks" OF "gi_mt_agent" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Remarks"
+  POSITION 13
+  MAX-WIDTH 200
+  ORDER 120
+
+ADD FIELD "DateTime11" OF "gi_mt_agent" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "DateTime 1"
+  POSITION 14
+  MAX-WIDTH 4
+  ORDER 130
+
+ADD FIELD "YearMonth1" OF "gi_mt_agent" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "YearMonth1"
+  POSITION 15
+  MAX-WIDTH 16
+  ORDER 140
+
+ADD FIELD "cons" OF "gi_mt_agent" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  LABEL "cons"
+  POSITION 16
+  MAX-WIDTH 4
+  ORDER 150
+
+ADD FIELD "creditamount-txt" OF "gi_mt_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  POSITION 17
+  MAX-WIDTH 40
+  ORDER 160
+
+ADD FIELD "debitamount-txt" OF "gi_mt_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  POSITION 18
+  MAX-WIDTH 40
+  ORDER 170
+
+ADD FIELD "MtAgentRemaining-txt" OF "gi_mt_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  POSITION 19
+  MAX-WIDTH 40
+  ORDER 180
+
+ADD FIELD "ODAmount-txt" OF "gi_mt_agent" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  POSITION 20
+  MAX-WIDTH 40
+  ORDER 190
+
+ADD FIELD "YearMonth1FN" OF "gi_mt_agent" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month FN"
+  POSITION 21
+  MAX-WIDTH 16
+  ORDER 200
+
+ADD FIELD "YearMonth1Week" OF "gi_mt_agent" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Year Month Week"
+  POSITION 22
+  MAX-WIDTH 16
+  ORDER 210
+
+ADD FIELD "party-name" OF "gi_mt_agent" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 23
+  MAX-WIDTH 200
+  ORDER 220
+
+ADD INDEX "idx" ON "gi_mt_agent" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cons" ASCENDING 
+
+ADD INDEX "idx1" ON "gi_mt_agent" 
+  AREA "Schema Area"
+  INDEX-FIELD "TransactionId" ASCENDING 
+
+ADD TABLE "gi_product"
+  AREA "Schema Area"
+  LABEL "Product"
+  DUMP-NAME "gi_product"
+
+ADD FIELD "Productname" OF "gi_product" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Productname"
+  POSITION 2
+  MAX-WIDTH 40
+  ORDER 140
+
+ADD INDEX "idx" ON "gi_product" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "Productname" ASCENDING 
+
+ADD TABLE "gi_rawdata"
+  AREA "Schema Area"
+  DUMP-NAME "gi_rawdata"
+
+ADD FIELD "period-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 2
+  MAX-WIDTH 200
+  ORDER 10
+
+ADD FIELD "accountanalysis-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 3
+  MAX-WIDTH 100
+  ORDER 20
+
+ADD FIELD "account-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 4
+  MAX-WIDTH 200
+  ORDER 30
+
+ADD FIELD "bookno-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 5
+  MAX-WIDTH 100
+  ORDER 40
+
+ADD FIELD "date-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 6
+  MAX-WIDTH 100
+  ORDER 50
+
+ADD FIELD "refno-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 7
+  MAX-WIDTH 100
+  ORDER 60
+
+ADD FIELD "name-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 8
+  MAX-WIDTH 100
+  ORDER 70
+
+ADD FIELD "particulars-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 9
+  MAX-WIDTH 100
+  ORDER 80
+
+ADD FIELD "currency-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 10
+  MAX-WIDTH 100
+  ORDER 90
+
+ADD FIELD "amount-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 11
+  MAX-WIDTH 100
+  ORDER 100
+
+ADD FIELD "debit-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 12
+  MAX-WIDTH 100
+  ORDER 110
+
+ADD FIELD "credit-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 13
+  MAX-WIDTH 100
+  ORDER 120
+
+ADD FIELD "runbal1-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 14
+  MAX-WIDTH 100
+  ORDER 130
+
+ADD FIELD "runbal2-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  POSITION 15
+  MAX-WIDTH 16
+  ORDER 140
+
+ADD FIELD "refnum1" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 16
+  MAX-WIDTH 100
+  ORDER 150
+
+ADD FIELD "refdate" OF "gi_rawdata" AS date 
+  FORMAT "99/99/99"
+  INITIAL ?
+  POSITION 17
+  MAX-WIDTH 4
+  ORDER 160
+
+ADD FIELD "refnum2" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 18
+  MAX-WIDTH 100
+  ORDER 170
+
+ADD FIELD "partyname" OF "gi_rawdata" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 19
+  MAX-WIDTH 200
+  ORDER 180
+
+ADD FIELD "particulars" OF "gi_rawdata" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  POSITION 20
+  MAX-WIDTH 400
+  ORDER 190
+
+ADD FIELD "currency-data" OF "gi_rawdata" AS character 
+  FORMAT "x(50)"
+  INITIAL ""
+  POSITION 21
+  MAX-WIDTH 100
+  ORDER 200
+
+ADD FIELD "amount" OF "gi_rawdata" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 22
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 210
+
+ADD FIELD "debit" OF "gi_rawdata" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 23
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 220
+
+ADD FIELD "credit" OF "gi_rawdata" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 24
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 230
+
+ADD FIELD "runbal1" OF "gi_rawdata" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 25
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 240
+
+ADD FIELD "runbal2" OF "gi_rawdata" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 26
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 250
+
+ADD FIELD "report-txt" OF "gi_rawdata" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  POSITION 27
+  MAX-WIDTH 16
+  ORDER 260
+
+ADD FIELD "amt1" OF "gi_rawdata" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 28
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 270
+
+ADD FIELD "amt2" OF "gi_rawdata" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 29
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 280
+
+ADD FIELD "amt3" OF "gi_rawdata" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 30
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 290
+
+ADD FIELD "amt4" OF "gi_rawdata" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 31
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 300
+
+ADD FIELD "amt5" OF "gi_rawdata" AS decimal 
+  FORMAT "->>>,>>>,>>9.99"
+  INITIAL "0"
+  POSITION 32
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 310
+
+ADD FIELD "report-txt2" OF "gi_rawdata" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  POSITION 33
+  MAX-WIDTH 16
+  ORDER 320
+
+ADD FIELD "cons" OF "gi_rawdata" AS integer 
+  FORMAT "->>>>>>9"
+  INITIAL "0"
+  POSITION 34
+  MAX-WIDTH 4
+  ORDER 330
+
+ADD FIELD "filename" OF "gi_rawdata" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  POSITION 35
+  MAX-WIDTH 200
+  ORDER 340
+
+ADD FIELD "acc-led-name" OF "gi_rawdata" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Ledger"
+  POSITION 36
+  MAX-WIDTH 200
+  ORDER 350
+
+ADD FIELD "currency" OF "gi_rawdata" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Currency"
+  POSITION 37
+  MAX-WIDTH 16
+  ORDER 360
+
+ADD FIELD "forex-rate" OF "gi_rawdata" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Rate"
+  POSITION 38
+  MAX-WIDTH 17
+  DECIMALS 2
+  ORDER 370
+
+ADD FIELD "LastVchId" OF "gi_rawdata" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Last Vou Id"
+  POSITION 39
+  MAX-WIDTH 60
+  ORDER 380
+
+ADD INDEX "idx" ON "gi_rawdata" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cons" ASCENDING 
+
+ADD TABLE "gi_transaction_id"
+  AREA "Schema Area"
+  LABEL "Transaction ID"
+  DUMP-NAME "gi_transaction_id"
+
+ADD FIELD "TransactionId" OF "gi_transaction_id" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "TransactionId"
+  POSITION 2
+  MAX-WIDTH 40
+  ORDER 80
+
+ADD INDEX "idx" ON "gi_transaction_id" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "TransactionId" ASCENDING 
+
+.
+PSC
+cpstream=ISO8859-1
+.
+0000113886
